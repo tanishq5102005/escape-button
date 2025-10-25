@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catch Me 😈</title>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(to right, #fba249, #f5d5b0);
+        font-family: sans-serif;
+    }
+
+    #result {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        color: rgb(50, 42, 42);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 1.5rem;
+        text-align: center;
+       /* transition: all 0.6s ease;*/
+    }
+
+    #runBtn {
+        position: absolute;
+        padding: 12px 20px;
+        font-size: 18px;
+        border-radius: 8px;
+        border: none;
+        background-color: #ff5722;
+        color: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div id="result"></div>
+    <button id="runBtn">catch me😈</button>
+
+    <script>
+        const btn = document.getElementById("runBtn");
+        const result = document.getElementById("result");
+
+        function runAway() {
+            const x = Math.floor(Math.random() * (window.innerWidth - btn.offsetWidth - 20));
+            const y = Math.floor(Math.random() * (window.innerHeight - btn.offsetHeight - 20));
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+        //Desktop:Run away on mouse hover
+
+        btn.addEventListener("mouseover", runAway);
+
+         //only click with enter key
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                result.textContent = "Hurray...Player wins!🥳🎉";
+                btn.style.display = "none";
+                
+            }
+        });
+    </script>
+</body>
+</html>
